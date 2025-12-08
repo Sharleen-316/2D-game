@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         // // Can't write directly to .position anything in C# (even though I swear I did in previous projects)
         // # Makes the player move forward
         Vector3 pos = transform.position;
-        pos.y += Input.GetAxis("Vertical");
+        pos.x += Input.GetAxis("Horizontal");
         transform.position = pos;
     }
 }
