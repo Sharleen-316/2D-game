@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     // # Rotation speed
     public float rotSpeed;
 
+    // # Boundaries variables
+    float shipBoundaryRadius = 0.49f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,8 +39,39 @@ public class PlayerMovement : MonoBehaviour
         // # Makes the player move left and right
         Vector3 pos = transform.position;
         pos.x += Input.GetAxis("Horizontal") * maxSpeed * Time.deltaTime; // // Allows us to control the speed the player is moving
-        //Vector3 velocity = new Vector3(0, Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime, 0); // # Forward and backward movement for reference but I'm not including it in this game
+
+        // # Forward and backward movement for reference but I'm not including it in this game
+        //Vector3 velocity = new Vector3(0, Input.GetAxis("Vertical") * maxSpeed * Time.deltaTime, 0);
         //pos += rot * velocity; // // Quaternion has to come first in this instance
-        //transform.position = pos;
+
+        // # Restrict player to screen's boundaries (for reference, not planning on using this)
+        // // Establishes y boundaries by checking if the player has reached the top/bottom of the screen
+        // // Done by using the camera size
+        //if(pos.y + shipBoundaryRadius > Camera.main.orthographicSize) // // "Camera.main" refers to the camera with the MainCamera tag on it
+        //{
+        //    pos.y = Camera.main.orthographicSize - shipBoundaryRadius;
+        //}
+        //if(pos.y - shipBoundaryRadius < -Camera.main.orthographicSize) // // "Camera.main" refers to the camera with the MainCamera tag on it
+        //{
+        //    pos.y = -Camera.main.orthographicSize + shipBoundaryRadius;
+        //}
+
+        // // Calculates the camera's orthographic width by getting the screen ratio
+        float screenRatio = (float)Screen.width/(float)Screen.height; // ! Will be weird? Boundaries become weird sizes due to doing dividing an integer by an integer (returns an integer when the actual result is a float)
+        float widthOrtho = Camera.main.orthographicSize * screenRatio;
+
+
+        // // Calculates horizontal bounds using the orthographic width
+        if(pos.x + shipBoundaryRadius > widthOrtho) // // "Camera.main" refers to the camera with the MainCamera tag on it
+        {
+            pos.x = widthOrtho - shipBoundaryRadius;
+        }
+        if(pos.x - shipBoundaryRadius < -widthOrtho) // // "Camera.main" refers to the camera with the MainCamera tag on it
+        {
+            pos.x = -widthOrtho + shipBoundaryRadius;
+        }
+
+        // # Update position
+        transform.position = pos;
     }
 }
