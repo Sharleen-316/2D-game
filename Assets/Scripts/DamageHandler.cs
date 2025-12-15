@@ -11,6 +11,8 @@ public class DamageHandler : MonoBehaviour
     // # Determines if object is a Player or Enemy
     int correctLayer;
 
+    public float invulnPeriod = 0;
+
     void Start()
     {
         // # Assigns the layer to the correctLayer variable

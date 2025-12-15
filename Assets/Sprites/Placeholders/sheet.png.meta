@@ -494,9 +494,9 @@ TextureImporter:
       name: Bullet01
       rect:
         serializedVersion: 2
-        x: 855
+        x: 856
         y: 549
-        width: 11
+        width: 9
         height: 54
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
