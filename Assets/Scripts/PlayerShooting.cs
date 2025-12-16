@@ -27,7 +27,8 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Pew!"); // # Debug message
             cooldownTimer = fireDelay; // # Resets the timer
             Vector3 offset = transform.rotation * bulletOffset; // # Sets transform of the bullet
-            Instantiate(bulletPrefab, transform.position + offset, transform.rotation); // # Spawns the bullet
+            GameObject bulletObject = (GameObject)Instantiate(bulletPrefab, transform.position + offset, transform.rotation); // # Spawns the bullet
+            bulletObject.layer = gameObject.layer;
         }
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7071531692606874722}
   - component: {fileID: 7745858261103766320}
   - component: {fileID: 3396712476753897714}
+  - component: {fileID: 1824008540186842862}
   m_Layer: 6
   m_Name: Enemy02
   m_TagString: Untagged
@@ -165,6 +166,21 @@ PolygonCollider2D:
       - {x: 0.1100198, y: 0.32818222}
       - {x: 0.090177834, y: 0.40111846}
   m_UseDelaunayMesh: 0
+--- !u!114 &1824008540186842862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312162881828648971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221bd9fdf6a41a049a243caa36e7cd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletOffset: {x: 0, y: 0.75, z: 0}
+  bulletPrefab: {fileID: 685886490829186136, guid: 5673edb573c2feb419d23cab430000f7, type: 3}
+  fireDelay: 0.5
 --- !u!1 &7944814698841097150
 GameObject:
   m_ObjectHideFlags: 0
