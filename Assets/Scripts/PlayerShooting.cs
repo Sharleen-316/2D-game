@@ -15,6 +15,15 @@ public class PlayerShooting : MonoBehaviour
     // # Cooldown period that occurs after player shoots
     float cooldownTimer = 0;
 
+    // # Layer of bullet
+    int bulletLayer;
+
+    void Start()
+    {
+        // # Initalises bulletLayer to equal the layer the game object is on at the start of the game
+        bulletLayer = gameObject.layer;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +37,7 @@ public class PlayerShooting : MonoBehaviour
             cooldownTimer = fireDelay; // # Resets the timer
             Vector3 offset = transform.rotation * bulletOffset; // # Sets transform of the bullet
             GameObject bulletObject = (GameObject)Instantiate(bulletPrefab, transform.position + offset, transform.rotation); // # Spawns the bullet
-            bulletObject.layer = gameObject.layer;
+            bulletObject.layer = bulletLayer; // # Sets the bullet to spawn on the correct layer to avoid enemies shooting each other
         }
     }
 }

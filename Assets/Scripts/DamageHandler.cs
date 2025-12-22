@@ -26,8 +26,10 @@ public class DamageHandler : MonoBehaviour
 
         // # Decreases health and puts object in invulnerable state
         health--;
-        invulnTimer = invulnPeriod;
-        gameObject.layer = 7;
+        if(invulnPeriod > 0){
+            invulnTimer = invulnPeriod;
+            gameObject.layer = 7;
+        }
     }
 
     void Update()
