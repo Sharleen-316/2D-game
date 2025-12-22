@@ -11,12 +11,29 @@ public class DamageHandler : MonoBehaviour
     // # Determines if object is a Player or Enemy
     int correctLayer;
 
+    // # Amount of time object is allowed to be invulnerable for
     public float invulnPeriod = 0;
+
+    // # Player flashing variabeles
+    SpriteRenderer spriteRend; // # Reference to sprite renderer
 
     void Start()
     {
         // # Assigns the layer to the correctLayer variable
         correctLayer = gameObject.layer;
+
+        // ! Only gets the sprite renderer on the parent object
+        spriteRend = GetComponent<SpriteRenderer>();
+        if(spriteRend == null)
+            {
+                // // Gets sprite renderer of the children objects
+                spriteRend = transform.GetComponentInChildren<SpriteRenderer>();
+                
+                if (spriteRend== null)
+            {
+                Debug.LogError("Object " + gameObject.name + " has no sprite rendered");
+            }
+            }
     }
 
     void OnTriggerEnter2D()
@@ -35,12 +52,27 @@ public class DamageHandler : MonoBehaviour
     void Update()
     {
         // # Decreases invulnerable timer
-        invulnTimer -= Time.deltaTime;
-
-        // # Changes the object's state back to default once timer has run out
-        if(invulnTimer <= 0)
+        if(invulnTimer > 0)
         {
-            gameObject.layer = correctLayer;
+            invulnTimer -= Time.deltaTime;
+
+            // # Changes the object's state back to default once timer has run out
+            if(invulnTimer <= 0)
+            {
+                gameObject.layer = correctLayer;
+
+                if(spriteRend!= null)
+                {
+                   spriteRend.enabled = true; 
+                }
+
+            } else
+            {
+                if(spriteRend!= null)
+                {
+                   spriteRend.enabled = !spriteRend.enabled; 
+                }
+            }
         }
 
         // # Calls die function if health is lower than or equal to 0
