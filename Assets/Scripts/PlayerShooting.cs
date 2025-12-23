@@ -30,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
         // # Decreases the timer each frame
         cooldownTimer -= Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && cooldownTimer <= 0) // ! Go to Input Manager in Unity Project Settings and change this from spacebar to enter also change GetButton to GetButtonDown
+        if (Input.GetButtonDown("Fire1") && cooldownTimer <= 0)
         {
             // # Shoot
             Debug.Log("Pew!"); // # Debug message
