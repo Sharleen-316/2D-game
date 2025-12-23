@@ -14,7 +14,11 @@ public class EnemyShooting : MonoBehaviour
     // # Cooldown period that occurs after player shoots
     float cooldownTimer = 0;
 
+    // # Layer bullet should spawn on
     int bulletLayer;
+
+    // # Reference to transform of player
+    Transform player;
 
     void Start()
     {
@@ -24,10 +28,21 @@ public class EnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player == null)
+        {
+            // # Find player ship
+            GameObject playerObject = GameObject.Find("PlayerShip");
+
+            if(playerObject != null)
+            {
+                player = playerObject.transform;
+            }
+        }
+
         // # Decreases the timer each frame
         cooldownTimer -= Time.deltaTime;
 
-        if (cooldownTimer <= 0)
+        if (cooldownTimer <= 0 && player != null && Vector3.Distance(transform.position, player.position) < 4)
         {
             // # Shoot
             Debug.Log("Pew!"); // # Debug message

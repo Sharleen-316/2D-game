@@ -23,14 +23,17 @@ public class PlayerSpawner : MonoBehaviour
         // # Decreases amount of lives player has
         numLives--;
 
-        // # Resets the respawn timer
-        respawnTimer = 1;
+        if(numLives > 0)
+        {
+            // # Resets the respawn timer
+            respawnTimer = 1;
 
-        // # Creates a new instance of the player and places it in the world
-        playerInstance = (GameObject)Instantiate(playerPrefab, transform.position, Quaternion.identity); // // Quaternion.identity = 0 rotation
+            // # Creates a new instance of the player and places it in the world
+            playerInstance = (GameObject)Instantiate(playerPrefab, transform.position, Quaternion.identity); // // Quaternion.identity = 0 rotation
 
-        // # Changes gameObject name for debugging reasons
-        playerInstance.name = "PlayerShip";
+            // # Changes gameObject name for debugging reasons
+            playerInstance.name = "PlayerShip";
+        }
     }
 
     // Update is called once per frame
