@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     float enemyRate = 5;
     float nextEnemy = 1;
-    float spawnDistance = 20f;
+    float spawnDistance = 3.5f;
     
 
     // Update is called once per frame
@@ -27,6 +27,12 @@ public class EnemySpawner : MonoBehaviour
 
             offset.z = 0;
             offset = offset.normalized * spawnDistance;
+
+            // # Helps create a boundary between player and enemies
+            if(transform.position.y + offset.y <= -2)
+            {
+                offset.y = offset.y + 2;
+            }
 
             Instantiate(enemyPrefab, transform.position + offset, Quaternion.identity);
         }
