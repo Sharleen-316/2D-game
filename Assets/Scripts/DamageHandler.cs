@@ -17,6 +17,9 @@ public class DamageHandler : MonoBehaviour
     // # Player flashing variabeles
     SpriteRenderer spriteRend; // # Reference to sprite renderer
 
+    bool pointsUpdated = false;
+
+
     void Start()
     {
         // # Assigns the layer to the correctLayer variable
@@ -39,13 +42,18 @@ public class DamageHandler : MonoBehaviour
     void OnTriggerEnter2D()
     {
         // # Debug message
-        Debug.Log("Trigger!");
+        //Debug.Log("Trigger!");
 
         // # Decreases health and puts object in invulnerable state
         health--;
         if(invulnPeriod > 0){
             invulnTimer = invulnPeriod;
             gameObject.layer = 7;
+        }
+
+        if(gameObject.layer == 6)
+        {
+            pointsUpdated = true;
         }
     }
 

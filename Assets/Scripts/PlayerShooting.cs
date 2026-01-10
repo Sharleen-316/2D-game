@@ -33,7 +33,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && cooldownTimer <= 0)
         {
             // # Shoot
-            Debug.Log("Pew!"); // # Debug message
+            //Debug.Log("Pew!"); // # Debug message
             cooldownTimer = fireDelay; // # Resets the timer
             Vector3 offset = transform.rotation * bulletOffset; // # Sets transform of the bullet
             GameObject bulletObject = (GameObject)Instantiate(bulletPrefab, transform.position + offset, transform.rotation); // # Spawns the bullet

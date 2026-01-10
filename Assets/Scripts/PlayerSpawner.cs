@@ -9,7 +9,9 @@ public class PlayerSpawner : MonoBehaviour
     // # Time between player death and respawn
     float respawnTimer = 1f;
 
-    public int numLives = 4; 
+    public int numLives = 4;
+
+    public int points = 0; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,8 +51,6 @@ public class PlayerSpawner : MonoBehaviour
                 // # Respawns the player when the timer has reached 0
                 SpawnPlayer();
             }
-
-            //SpawnPlayer();
         } 
         
     }
