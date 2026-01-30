@@ -17,6 +17,8 @@ public class DamageHandler : MonoBehaviour
     // # Player flashing variabeles
     SpriteRenderer spriteRend; // # Reference to sprite renderer
 
+    bool damageTaken = false;
+
     void Start()
     {
         // # Assigns the layer to the correctLayer variable

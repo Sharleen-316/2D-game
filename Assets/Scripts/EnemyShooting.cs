@@ -20,6 +20,8 @@ public class EnemyShooting : MonoBehaviour
     // # Reference to transform of player
     Transform player;
 
+    bool shot = false;
+
     void Start()
     {
         bulletLayer = gameObject.layer;

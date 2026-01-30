@@ -6,6 +6,8 @@ public class SelfDestruct : MonoBehaviour
     // # Timer for when it should destory itself
     public float timer = 1f;
 
+    public int blah = 10;
+
     // Update is called once per frame
     void Update()
     {
